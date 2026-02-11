@@ -1,0 +1,24 @@
+{
+  "name": "lazy-ai",
+  "version": "1.0.0",
+  "description": "AI Tools Reviews - Affiliate site with honest AI tool reviews and comparisons",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx serve .",
+    "generate": "node generate-reviews.js",
+    "deploy": "npx railway deploy",
+    "automate": "node automate.js --run"
+  },
+  "keywords": [
+    "ai",
+    "reviews",
+    "affiliate",
+    "chatgpt",
+    "artificial-intelligence"
+  ],
+  "author": "AI Tools Solutions",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
