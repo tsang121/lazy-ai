@@ -1,0 +1,14 @@
+[2026-02-12T05:51:11.408Z] 🚀 Starting weekly site automation...
+[2026-02-12T05:51:11.410Z] 📝 Generating review pages...
+[2026-02-12T05:51:11.452Z] 📄 Total pages: 8
+[2026-02-12T05:51:11.452Z] 📅 Last updated: 2026-02-12
+[2026-02-12T05:51:11.482Z] 📦 Changes staged for commit
+[2026-02-12T05:51:11.482Z] ⚠️ RAILWAY_TOKEN not set - skipping deployment
+[2026-02-12T05:51:11.482Z] 
+📊 Weekly Report:
+   - Total pages: 8
+   - Review pages: 6
+   - Category pages: 1
+   - Status: All systems operational
+    
+[2026-02-12T05:51:11.482Z] ✅ Automation complete!
