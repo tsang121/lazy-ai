@@ -1,11 +1,10 @@
 {
   "$schema": "https://railway.app/schema.json",
   "build": {
-    "builder": "NIXPACKS",
-    "nixpacksPlan": "{\"pkgs\": [\"nodejs\"]}"
+    "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "npx serve -p $PORT -s",
+    "startCommand": "npx serve -p $PORT -s .",
     "healthcheckPath": "/",
     "healthcheckTimeout": 60
   }
