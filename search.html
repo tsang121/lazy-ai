@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - LazyAI</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .search-header { background: linear-gradient(135deg, #1a56db 0%, #4f46e5 100%); color: white; padding: 40px 0; text-align: center; }
+        .search-content { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .search-box { display: flex; max-width: 600px; margin: 20px auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        .search-box input { flex: 1; padding: 18px 25px; border: none; font-size: 1rem; outline: none; }
+        .search-box button { padding: 18px 35px; background: #059669; border: none; color: white; font-weight: 600; cursor: pointer; }
+        .results-info { text-align: center; margin-bottom: 30px; color: #6b7280; }
+        .tool-card { margin-bottom: 20px; }
+        .no-results { text-align: center; padding: 60px 20px; color: #6b7280; }
+        .no-results h2 { margin-bottom: 15px; color: #1f2937; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">LazyAI</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="category-writing.html">Categories</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="#">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="search-header">
+        <div class="container">
+            <h1>Search Results</h1>
+            <form class="search-box" action="search.html" method="get">
+                <input type="text" name="q" id="searchInput" placeholder="Search for AI tools...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="search-content">
+        <p class="results-info" id="resultsInfo">Showing results for: <strong id="searchTerm"></strong></p>
+        <div id="results"></div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>2025 LazyAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const tools = [
+            { name: "ChatGPT", url: "review-chatgpt.html", category: "writing", desc: "The most popular AI chatbot. Excellent for writing, coding, and assistance." },
+            { name: "Claude", url: "review-claude.html", category: "writing", desc: "Exceptional for long-form content, analysis, and nuanced writing." },
+            { name: "Midjourney", url: "review-midjourney.html", category: "images", desc: "The leading AI image generator. Creates stunning artwork." },
+            { name: "GitHub Copilot", url: "review-github-copilot.html", category: "coding", desc: "AI pair programmer. Suggests code as you type." },
+            { name: "Jasper", url: "review-jasper.html", category: "writing", desc: "AI content platform for marketing teams." },
+            { name: "Notion AI", url: "review-notion-ai.html", category: "productivity", desc: "AI features built into Notion workspace." }
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        const query = (params.get("q") || "").toLowerCase();
+        document.getElementById("searchTerm").textContent = query || "all tools";
+        document.getElementById("searchInput").value = query;
+
+        if (!query) {
+            document.getElementById("results").innerHTML = '<div class="no-results"><h2>Enter a search term</h2><p>Try searching for "ChatGPT", "writing", "image", "coding", etc.</p></div>';
+        } else {
+            const results = tools.filter(t => 
+                t.name.toLowerCase().includes(query) || 
+                t.desc.toLowerCase().includes(query) ||
+                t.category.toLowerCase().includes(query)
+            );
+
+            if (results.length === 0) {
+                document.getElementById("results").innerHTML = '<div class="no-results"><h2>No results found</h2><p>Try searching for "ChatGPT", "Claude", "Midjourney", "coding", etc.</p></div>';
+            } else {
+                document.getElementById("results").innerHTML = results.map(t => 
+                    '<a href="' + t.url + '" class="tool-card" style="display:block;text-decoration:none;color:inherit;"><div class="tool-content"><h3>' + t.name + '</h3><p>' + t.desc + '</p></div></a>'
+                ).join("");
+            }
+        }
+    </script>
+</body>
+</html>
